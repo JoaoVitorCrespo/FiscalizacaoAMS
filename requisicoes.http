@@ -1,0 +1,98 @@
+POST http://localhost:9091/uf/cadastrar HTTP/1.1
+content-type: application/json
+
+{
+    "nome":"Sao Paulo",
+    "sigla":"SP"
+}
+###
+POST http://localhost:9091/municipio/cadastrar HTTP/1.1
+content-type: application/json
+
+{
+    "nome":"Osasco",
+    "uf":"Sao Paulo"
+}
+
+###
+POST http://localhost:9091/bairro/cadastrar HTTP/1.1
+content-type: application/json
+
+{
+    "nome":"Bonfim",
+    "municipio":"Osasco"
+}
+
+###
+POST http://localhost:9091/empresa/cadastrar HTTP/1.1
+content-type: application/json
+
+{
+    "cnpj":"3213213123",
+    "razaoSocial":"Escola Tom"
+}
+
+###
+POST http://localhost:9091/fiscalizacao/cadastrar HTTP/1.1
+content-type: application/json
+
+{
+    "data":"2020-02-02",
+    "logradouro":"Av Nossa Senhora da Gloria, 274",
+    "cep":"2874000",
+    "empresa":"12.148.966/0001-50",
+    "bairro":"CENTRO",
+    "municipio":"Timbó",
+    "uf":"Santa Catarina"
+}
+
+###
+GET http://localhost:9091/uf/ HTTP/1.1
+
+###
+GET http://localhost:9091/fiscalizacao/ HTTP/1.1
+
+###
+GET http://localhost:9091/fiscalizacao/excluir/5 HTTP/1.1
+
+
+###
+GET http://localhost:9091/uf/excluir/Santa Catarina HTTP/1.1
+
+
+###
+GET http://localhost:9091/uf/atualizar HTTP/1.1
+
+###
+GET http://localhost:9091/municipio/atualizar HTTP/1.1
+
+###
+GET http://localhost:9091/bairro/atualizar HTTP/1.1
+
+
+###
+GET http://localhost:9091/empresa/atualizar HTTP/1.1
+
+###
+GET http://localhost:9091/fiscalizacao/atualizar HTTP/1.1
+
+
+###
+GET http://localhost:9091/municipio/ HTTP/1.1
+
+###
+GET http://localhost:9091/bairro/ HTTP/1.1
+
+
+###
+GET http://localhost:9091/municipio/excluir/Barueri HTTP/1.1
+
+
+###
+GET http://localhost:9091/bairro/excluir/Bonfim HTTP/1.1
+
+###
+GET http://localhost:9091/empresa/ HTTP/1.1
+
+###
+GET http://localhost:9091/empresa/excluir/3213213123 HTTP/1.1
