@@ -2,6 +2,8 @@ package br.edu.fsma.fiscalizacao.main.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+
+
 import java.io.*;
 
 
@@ -61,6 +63,21 @@ public class MunicipioController {
         }
 
         return municipiosRs;
+    }
+
+    @CrossOrigin
+    @GetMapping("/editar/{id}")
+    private void editarMunicipio(@RequestBody MunicipioRs municipioRs, @PathVariable("id") Long id) throws Exception{
+        var uftemp = unidadeFederativaRepository.findByNome(municipioRs.getUf());
+        if(uftemp.isPresent()){
+            UnidadeFederativa uf = uftemp.get();
+            Municipio municipio = MunicipioRs.getMunicipio(municipioRs, uf);
+            municipio.setId(id);
+            municipioRepository.save(municipio);
+        } else {
+            throw new Exception("UF não encontrado");
+        }
+    
     }
 
     @CrossOrigin
