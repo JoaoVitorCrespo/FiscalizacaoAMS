@@ -15,6 +15,7 @@ import br.edu.fsma.fiscalizacao.main.controller.dto.UnidadeFederativaRs;
 import br.edu.fsma.fiscalizacao.main.model.UnidadeFederativa;
 import br.edu.fsma.fiscalizacao.main.repository.UnidadeFederativaRepository;
 
+
 @RestController
 @RequestMapping("/uf")
 public class UnidadeFederativaController {
@@ -67,6 +68,14 @@ public class UnidadeFederativaController {
                 throw new Exception("Estado nao encontrado");
             }
         }
+    }
+
+    @CrossOrigin
+    @GetMapping("/editar/{id}")
+    private void editarUF(@RequestBody UnidadeFederativaRs unidadeFederativaRs, @PathVariable("id") Long id) throws Exception{
+        UnidadeFederativa uf = UnidadeFederativaRs.getUnidadeFederativa(unidadeFederativaRs);
+        uf.setId(id);
+        unidadeFederativaRepository.save(uf);
     }
 
 
